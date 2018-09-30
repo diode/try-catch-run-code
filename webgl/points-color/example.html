@@ -1,0 +1,23 @@
+<!-- Target canvas -->
+<canvas id="expCanvas" width="480" height="480"> </canvas>
+
+<!-- Vertex shader code -->
+<script id="vertexShaderCode" type="x-shader/x-vertex">
+  attribute vec2 coordinates;
+  attribute vec3 color;
+  varying vec3 vColor;
+  void main(void) {
+    gl_Position = vec4(coordinates, 0.0, 1.0);
+    gl_PointSize = 20.0;
+    vColor = color;
+  }
+</script>
+
+<!-- Fragment shader code -->
+<script id="fragmentShaderCode" type="x-shader/x-fragment">
+  precision mediump float;
+  varying vec3 vColor;
+  void main(void) {
+    gl_FragColor = vec4(vColor, 1.0);
+  }
+</script>

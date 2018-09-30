@@ -1,0 +1,34 @@
+<!-- Target canvas -->
+<canvas id="expCanvas" width="480" height="480"> </canvas>
+
+<!-- Vertex shader code uniform mat4 scaleMatrix uniform mat4 rotMatrix-->
+<script id="vertexShaderCode" type="x-shader/x-vertex">
+  attribute vec3 coordinates;
+  uniform mat4 projMatrix;
+  uniform mat4 viewMatrix;
+  uniform mat4 rotXMatrix;
+  uniform mat4 rotYMatrix;
+  uniform mat4 rotZMatrix;
+
+  attribute vec2 texture;
+  varying vec2 vTexture;
+
+  void main(void) {
+    gl_Position = projMatrix * viewMatrix *
+                  (rotXMatrix * (rotYMatrix * (rotZMatrix *
+                                  vec4(coordinates, 1.0))));
+    vTexture = texture;
+  }
+</script>
+
+<!-- Fragment shader code -->
+<script id="fragmentShaderCode" type="x-shader/x-fragment">
+  precision mediump float;
+
+  varying vec2 vTexture;
+  uniform sampler2D sampler;
+
+  void main(void) {
+    gl_FragColor = texture2D(sampler, vec2(vTexture.s, vTexture.t));
+  }
+</script>

@@ -1,0 +1,49 @@
+/* App.css */
+.App {
+  background-color: #eee;
+  margin: 0;
+  padding: 10px;
+}
+
+.comments{
+  list-style: none;
+  list-style-type: none;
+
+  margin: 10px 0;
+  padding: 5px 0;
+}
+
+
+/* Comment.css */
+.comment{
+  margin: 0 0 20px;
+  padding: 10px;
+  background-color: #ccc;
+}
+
+.comment label{
+  display: block;
+}
+
+.comment label.name{
+  font-size: 18px;
+}
+
+.comment label.time{
+  color: #666;
+}
+
+.comment .actions{
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  list-style-type: none;
+  overflow: auto;
+}
+
+.comment .actions>li{
+  float: left;
+  margin-right: 10px;
+}

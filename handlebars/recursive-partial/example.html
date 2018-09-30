@@ -1,0 +1,23 @@
+<script id="mainTemplate" type="text/x-handlebars-template">
+  <div class="main">
+    <label>Main</label>
+    <nav>{{> navigation menuArray=menu}}</nav>
+  </div>
+</script>
+
+<script id="navigationTemplate" type="text/x-handlebars-template">
+  <div class="navigation">
+    <ul>
+    {{#each menuArray}}
+      <li>
+        {{#if menu}}
+          {{label}}
+          {{> navigation menuArray=menu}}
+        {{else}}
+          <a href="{{link}}">{{label}}</a>
+        {{/if}}
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+</script>

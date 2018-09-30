@@ -1,0 +1,29 @@
+<!-- Target canvas -->
+<canvas id="expCanvas"> </canvas>
+
+<!-- Vertex shader code -->
+<script id="vertexShaderCode" type="x-shader/x-vertex">
+  attribute vec3 coordinates;
+  uniform mat4 viewMatrix;
+  uniform mat4 projectionMatrix;
+
+  attribute vec3 color;
+  varying vec3 vColor;
+
+  void main(void) {
+    gl_Position = projectionMatrix * viewMatrix * vec4(coordinates, 1.0);
+    vColor = color;
+  }
+</script>
+
+<!-- Fragment shader code -->
+<script id="fragmentShaderCode" type="x-shader/x-fragment">
+    precision mediump float;
+    #ifdef GL_ES
+       precision highp float;
+    #endif
+    varying vec3 vColor;
+    void main(void) {
+     gl_FragColor = vec4(vColor, 0.1);
+    }
+</script>
